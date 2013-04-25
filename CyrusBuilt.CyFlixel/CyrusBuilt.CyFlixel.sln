@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyrusBuilt.CyFlixel.CyFlixelGame", "CyrusBuilt.CyFlixel.CyFlixelGame\CyrusBuilt.CyFlixel.CyFlixelGame.csproj", "{3FAAE91B-E9BA-4CFE-9740-6FF598AF6BFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyrusBuilt.CyFlixel.CyFlixelEngine", "CyrusBuilt.CyFlixel.CyFlixelEngine\CyrusBuilt.CyFlixel.CyFlixelEngine.csproj", "{3399A6A8-49A8-41A3-B75F-226D7FE1ABE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+		AppStore|x86 = AppStore|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3399A6A8-49A8-41A3-B75F-226D7FE1ABE0}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{3399A6A8-49A8-41A3-B75F-226D7FE1ABE0}.AppStore|x86.Build.0 = Release|Any CPU
+		{3399A6A8-49A8-41A3-B75F-226D7FE1ABE0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3399A6A8-49A8-41A3-B75F-226D7FE1ABE0}.Debug|x86.Build.0 = Debug|Any CPU
+		{3399A6A8-49A8-41A3-B75F-226D7FE1ABE0}.Release|x86.ActiveCfg = Release|Any CPU
+		{3399A6A8-49A8-41A3-B75F-226D7FE1ABE0}.Release|x86.Build.0 = Release|Any CPU
+		{3FAAE91B-E9BA-4CFE-9740-6FF598AF6BFD}.AppStore|x86.ActiveCfg = AppStore|x86
+		{3FAAE91B-E9BA-4CFE-9740-6FF598AF6BFD}.AppStore|x86.Build.0 = AppStore|x86
+		{3FAAE91B-E9BA-4CFE-9740-6FF598AF6BFD}.Debug|x86.ActiveCfg = Debug|x86
+		{3FAAE91B-E9BA-4CFE-9740-6FF598AF6BFD}.Debug|x86.Build.0 = Debug|x86
+		{3FAAE91B-E9BA-4CFE-9740-6FF598AF6BFD}.Release|x86.ActiveCfg = Release|x86
+		{3FAAE91B-E9BA-4CFE-9740-6FF598AF6BFD}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = CyrusBuilt.CyFlixel.CyFlixelGame\CyrusBuilt.CyFlixel.CyFlixelGame.csproj
+	EndGlobalSection
+EndGlobal

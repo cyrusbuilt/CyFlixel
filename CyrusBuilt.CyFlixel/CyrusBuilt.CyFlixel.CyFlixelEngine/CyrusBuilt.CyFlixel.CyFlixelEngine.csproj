@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3399A6A8-49A8-41A3-B75F-226D7FE1ABE0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CyrusBuilt.CyFlixel.CyFlixelEngine</RootNamespace>
+    <AssemblyName>CyrusBuilt.CyFlixel.CyFlixelEngine</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="MonoGame.Framework, Version=3.0.0.0, Culture=neutral">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="CyFlixelObject.cs" />
+    <Compile Include="CyFlixelRect.cs" />
+    <Compile Include="GameMath.cs" />
+    <Compile Include="GraphicsUtils.cs" />
+    <Compile Include="EngineGlobal.cs" />
+    <Compile Include="QuadTree.cs" />
+    <Compile Include="Data\FlixelList.cs" />
+    <Compile Include="FlixelGroup.cs" />
+    <Compile Include="Events\EffectTypes.cs" />
+    <Compile Include="Events\MouseEventTypes.cs" />
+    <Compile Include="Events\EventHandlerDelegates.cs" />
+    <Compile Include="Events\EffectCompletedEventArgs.cs" />
+    <Compile Include="Events\SpriteCollisionEventArgs.cs" />
+    <Compile Include="Events\MouseEventArgs.cs" />
+    <Compile Include="FlixelUtils.cs" />
+    <Compile Include="CyFlixelGame.cs" />
+    <Compile Include="FlixelSprite.cs" />
+    <Compile Include="Facing2D.cs" />
+    <Compile Include="BlendingModes.cs" />
+    <Compile Include="Data\FlixelAnimation.cs" />
+    <Compile Include="Events\AnimationEventArgs.cs" />
+    <Compile Include="ParticleEmitter.cs" />
+    <Compile Include="FX\Particle.cs" />
+    <Compile Include="UI\GameConsole.cs" />
+    <Compile Include="GameStateBase.cs" />
+    <Compile Include="Multimedia\Monitor.cs" />
+    <Compile Include="Storage\SaveDataEntry.cs" />
+    <Compile Include="Storage\SaveData.cs" />
+    <Compile Include="Storage\GameStorage.cs" />
+    <Compile Include="Input\MouseInput.cs" />
+    <Compile Include="Input\KeyboardInput.cs" />
+    <Compile Include="Input\GamepadInput.cs" />
+    <Compile Include="Multimedia\Sound.cs" />
+    <Compile Include="Multimedia\SoundManager.cs" />
+    <Compile Include="FX\Quake.cs" />
+    <Compile Include="FX\Flash.cs" />
+    <Compile Include="FX\Fade.cs" />
+    <Compile Include="Graphics\LogoPixel.cs" />
+    <Compile Include="Graphics\PauseScreen.cs" />
+    <Compile Include="Graphics\TextJustification.cs" />
+    <Compile Include="Graphics\TextSprite.cs" />
+    <Compile Include="FX\Splash.cs" />
+    <Compile Include="Graphics\TileBlock.cs" />
+    <Compile Include="Graphics\BlockPoint.cs" />
+    <Compile Include="Graphics\TileMap.cs" />
+    <Compile Include="Graphics\TileMode.cs" />
+    <Compile Include="UI\Button.cs" />
+    <Compile Include="EngineFactory.cs" />
+    <Compile Include="EntitySprites\PlayerSprite.cs" />
+    <Compile Include="EntitySprites\WeaponSprite.cs" />
+    <Compile Include="EntitySprites\VehicleSprite.cs" />
+    <Compile Include="EntitySprites\ItemSprite.cs" />
+    <Compile Include="EntitySprites\ItemTypes.cs" />
+    <Compile Include="EntitySprites\WeaponTypes.cs" />
+    <Compile Include="Events\WeaponReloadEventArgs.cs" />
+    <Compile Include="Events\WeaponEmptyEventArgs.cs" />
+    <Compile Include="Events\WeaponFireEventArgs.cs" />
+    <Compile Include="Events\ItemEmptyEventArgs.cs" />
+    <Compile Include="Events\ItemUsedEventArgs.cs" />
+    <Compile Include="Events\ItemReplenishEventArgs.cs" />
+    <Compile Include="EntitySprites\WeaponCollection.cs" />
+    <Compile Include="EntitySprites\ItemCollection.cs" />
+    <Compile Include="EntitySprites\DuplicateSpriteException.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Events\" />
+    <Folder Include="Data\" />
+    <Folder Include="Input\" />
+    <Folder Include="FX\" />
+    <Folder Include="UI\" />
+    <Folder Include="Multimedia\" />
+    <Folder Include="Storage\" />
+    <Folder Include="Graphics\" />
+    <Folder Include="EntitySprites\" />
+  </ItemGroup>
+</Project>

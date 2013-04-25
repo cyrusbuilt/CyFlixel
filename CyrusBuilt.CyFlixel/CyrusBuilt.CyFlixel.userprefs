@@ -1,0 +1,16 @@
+﻿<Properties MonoDevelop.MonoMac.LastXamMacNagTime="4/25/2013 3:17:18 AM">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/DuplicateSpriteException.cs">
+    <Files>
+      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/PlayerSprite.cs" Line="23" Column="14" />
+      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/WeaponSprite.cs" Line="29" Column="65" />
+      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/WeaponCollection.cs" Line="46" Column="13" />
+      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/ItemCollection.cs" Line="56" Column="4" />
+      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/DuplicateSpriteException.cs" Line="30" Column="14" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
