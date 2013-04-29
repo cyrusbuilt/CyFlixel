@@ -41,7 +41,7 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		/// <summary>
 		/// Occurs when the item is used up.
 		/// </summary>
-		public event ItemEmptyEventHandler Empty;
+		public event ItemEmptyEventHandler ItemEmpty;
 
 		/// <summary>
 		/// Occurs when the item is used once.

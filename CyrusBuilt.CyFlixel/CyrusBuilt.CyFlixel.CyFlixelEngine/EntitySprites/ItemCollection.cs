@@ -60,7 +60,7 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		/// The zero-based index at which to get or set the <see cref="ItemSprite"/>.
 		/// </param>
 		public ItemSprite this[Int32 index] {
-			get { return base.List[index]; }
+			get { return base.List[index] as ItemSprite; }
 			set { base.List[index] = value; }
 		}
 		#endregion
@@ -84,15 +84,96 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		}
 
 		/// <summary>
-		/// Insert the specified index and item.
+		/// Insert the specified <see cref="ItemSprite"/> at the specified index.
 		/// </summary>
-		/// <param name="index">Index.</param>
-		/// <param name="item">Item.</param>
+		/// <param name="index">
+		/// The zero-based index at which to insert the item.
+		/// </param>
+		/// <param name="item">
+		/// The item to insert.
+		/// </param>
+		/// <exception cref="DuplicateSpriteException">
+		/// An identical <see cref="ItemSprite"/> instance already exists in
+		/// this collection.
+		/// </exception>
 		public void Insert(Int32 index, ItemSprite item) {
 			if (base.List.Contains(item)) {
 				throw new DuplicateSpriteException(item.InstanceId);
 			}
 			base.List.Insert(index, item);
+		}
+
+		/// <summary>
+		/// Remove the specified item.
+		/// </summary>
+		/// <param name="item">
+		/// The <see cref="ItemSprite"/> to remove from the collection.
+		/// </param>
+		public void Remove(ItemSprite item) {
+			if (base.List.Contains(item)) {
+				base.List.Remove(item);
+			}
+		}
+
+		/// <summary>
+		/// Gets a flag indicate whether or not the specified <see cref="ItemSprite"/>
+		/// exists in the collection.
+		/// </summary>
+		/// <param name="item">
+		/// The <see cref="ItemSprite"/> to check for.
+		/// </param>
+		public Boolean Contains(ItemSprite item) {
+			return base.List.Contains(item);
+		}
+
+		/// <summary>
+		/// Gets the first index of the specified <see cref="ItemSprite"/>.
+		/// </summary>
+		/// <returns>
+		/// If successful, the zero-based index of the specified <see cref="ItemSprite"/>;
+		/// Otherwise, -1 if the item does not exist in the collection.
+		/// </returns>
+		/// <param name="item">
+		/// The <see cref="ItemSprite"/> to check for.
+		/// </param>
+		public Int32 IndexOf(ItemSprite item) {
+			return base.List.IndexOf(item);
+		}
+
+		/// <summary>
+		/// Copies the contents of the specified array to this collection.
+		/// </summary>
+		/// <param name="array">
+		/// The array of <see cref="ItemSprite"/> objects to copy to the
+		/// collection.
+		/// </param>
+		/// <param name="index">
+		/// The zero-based index at which to start copying.
+		/// </param>
+		public void CopyTo(ItemSprite[] array, Int32 index) {
+			base.List.CopyTo(array, index);
+		}
+
+		/// <summary>
+		/// Disposes the items in the collection.
+		/// </summary>
+		public void DisposeItems() {
+			foreach (ItemSprite item in this) {
+				item.Dispose();
+			}
+		}
+ 
+		/// <summary>
+		/// Determines if the specified collection is null or empty.
+		/// </summary>
+		/// <returns>
+		/// true if the specifed collection is null or empty; otherwise, false<.
+		/// </returns>
+		/// <param name="collection">
+		/// The collection to check.
+		/// </param>
+		public static Boolean IsNullOrEmpty(ItemCollection collection) {
+			return ((collection == null) || (collection.Count == 0));
 		}
 		#endregion
 	}
