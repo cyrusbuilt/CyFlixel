@@ -114,5 +114,27 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.Events
 	/// The event arguments.
 	/// </param>
 	public delegate void ItemReplenishEventHandler(Object sender, ItemReplenishEventArgs e);
+
+	/// <summary>
+	/// Handler delegate for the weapon change (select) event.
+	/// </summary>
+	/// <param name="sender">
+	/// The object sending the event call.
+	/// </param>
+	/// <param name="e">
+	/// The event arguments.
+	/// </param>
+	public delegate void WeaponChangeEventHandler(Object sender, WeaponChangeEventArgs e);
+
+	/// <summary>
+	/// Handler delegate for the item change (select) event.
+	/// </summary>
+	/// <param name="sender">
+	/// The object sending the event call.
+	/// </param>
+	/// <param name="e">
+	/// The event arguments.
+	/// </param>
+	public delegate void ItemChangeEventHandler(Object sender, ItemChangeEventArgs e);
 }
 

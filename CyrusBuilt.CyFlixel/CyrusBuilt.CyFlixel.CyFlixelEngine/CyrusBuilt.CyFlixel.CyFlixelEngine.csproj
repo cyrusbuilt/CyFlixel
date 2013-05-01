@@ -102,6 +102,8 @@
     <Compile Include="EntitySprites\WeaponCollection.cs" />
     <Compile Include="EntitySprites\ItemCollection.cs" />
     <Compile Include="EntitySprites\DuplicateSpriteException.cs" />
+    <Compile Include="Events\WeaponChangeEventArgs.cs" />
+    <Compile Include="Events\ItemChangeEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

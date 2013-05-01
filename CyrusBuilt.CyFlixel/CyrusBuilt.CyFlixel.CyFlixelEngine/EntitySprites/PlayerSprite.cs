@@ -40,7 +40,15 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		#endregion
 
 		#region Events
+		/// <summary>
+		/// Occurs when weapon selection changes.
+		/// </summary>
+		public event WeaponChangeEventHandler WeaponSelectionChanged;
 
+		/// <summary>
+		/// Occurs when item selection changes.
+		/// </summary>
+		public event ItemChangeEventHandler ItemSelectionChanged;
 		#endregion
 
 		#region Constructors
@@ -108,6 +116,30 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 
 		#region Methods
 		/// <summary>
+		/// Raises the weapon selection changed event.
+		/// </summary>
+		/// <param name="e">
+		/// The event arguments.
+		/// </param>
+		protected virtual void OnWeaponSelectionChanged(WeaponChangeEventArgs e) {
+			if (this.WeaponSelectionChanged != null) {
+				this.WeaponSelectionChanged(this, e);
+			}
+		}
+
+		/// <summary>
+		/// Raises the item selection changed event.
+		/// </summary>
+		/// <param name="e">
+		/// The event arguments.
+		/// </param>
+		protected virtual void OnItemSelectionChanged(ItemChangeEventArgs e) {
+			if (this.ItemSelectionChanged != null) {
+				this.ItemSelectionChanged(this, e);
+			}
+		}
+
+		/// <summary>
 		/// Releases all resource used by the <see cref="CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites.PlayerSprite"/>
 		/// object.
 		/// </summary>
@@ -146,11 +178,22 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 				throw new IndexOutOfRangeException();
 			}
 
+			// Find the specified weapon.
 			if (!WeaponCollection.IsNullOrEmpty(this._weaponInventory)) {
 				WeaponSprite ws = this._weaponInventory[weaponIndex];
 				if ((ws != null) && (!ws.Equals(this._selectedWeapon))) {
+					// The weapon was found in inventory. Save off the current
+					// weapon selection (if we have one).
+					Int32 lastIndex = -1;
+					WeaponSprite lastWeapon = null;
+					if (this._selectedItem != null) {
+						lastWeapon = this._selectedWeapon;
+						lastIndex = this._weaponInventory.IndexOf(lastWeapon);
+					}
+
+					// Set selection and fire notification.
 					this._selectedWeapon = ws;
-					// TODO fire weapon change event.
+					this.OnWeaponSelectionChanged(new WeaponChangeEventArgs(weaponIndex, ws, lastIndex, lastWeapon));
 				}
 			}
 		}
@@ -170,11 +213,22 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 				throw new IndexOutOfRangeException();
 			}
 
+			// Find the specified item in inventory.
 			if (!ItemCollection.IsNullOrEmpty(this._itemInventory)) {
 				ItemSprite item = this._itemInventory[itemIndex];
 				if ((item != null) && (!itemIndex.Equals(this._selectedItem))) {
+					// The item was found in inventory. Save off the current
+					// item selection (if we have one).
+					Int32 lastIndex = -1;
+					ItemSprite lastItem = null;
+					if (this._selectedItem != null) {
+						lastItem = this._selectedItem;
+						lastIndex = this._itemInventory.IndexOf(lastItem);
+					}
+
+					// Set the selection and fire notification.
 					this._selectedItem = item;
-					// TODO fire item change event.
+					this.OnItemSelectionChanged(new ItemChangeEventArgs(itemIndex, item, lastIndex, lastItem));
 				}
 			}
 		}
@@ -196,6 +250,7 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 				if (autoSelect) {
 					this.SelectWeapon(index);
 				}
+				return;
 			}
 			// TODO if the weapon already exists, take what ammo we can.
 		}
