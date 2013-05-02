@@ -49,6 +49,16 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		/// Occurs when item selection changes.
 		/// </summary>
 		public event ItemChangeEventHandler ItemSelectionChanged;
+
+		/// <summary>
+		/// Occurs when a weapon is added to inventory.
+		/// </summary>
+		public event WeaponAddedEventHandler WeaponAdded;
+
+		/// <summary>
+		/// Occurs when an item is added to inventory.
+		/// </summary>
+		public event ItemAddedEventHandler ItemAdded;
 		#endregion
 
 		#region Constructors
@@ -136,6 +146,30 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		protected virtual void OnItemSelectionChanged(ItemChangeEventArgs e) {
 			if (this.ItemSelectionChanged != null) {
 				this.ItemSelectionChanged(this, e);
+			}
+		}
+
+		/// <summary>
+		/// Raises the weapon added event.
+		/// </summary>
+		/// <param name="e">
+		/// The event arguments.
+		/// </param>
+		protected virtual void OnWeaponAdded(WeaponAddedEventArgs e) {
+			if (this.WeaponAdded != null) {
+				this.WeaponAdded(this, e);
+			}
+		}
+
+		/// <summary>
+		/// Raises the item added event.
+		/// </summary>
+		/// <param name="e">
+		/// The event arguments.
+		/// </param>
+		protected virtual void OnItemAdded(ItemAddedEventArgs e) {
+			if (this.ItemAdded != null) {
+				this.ItemAdded(this, e);
 			}
 		}
 
@@ -244,15 +278,36 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		/// If set to true automatically select once added select.
 		/// </param>
 		public void GiveWeapon(WeaponSprite weapon, Boolean autoSelect) {
+			if (weapon == null) {
+				return;
+			}
+
 			Int32 index = this._weaponInventory.Add(weapon);
 			if (index != -1) {
-				// TODO fire weapon added event.
+				this.OnWeaponAdded(new WeaponAddedEventArgs(index, weapon.WeaponType, this._weaponInventory.Count));
 				if (autoSelect) {
 					this.SelectWeapon(index);
 				}
 				return;
 			}
-			// TODO if the weapon already exists, take what ammo we can.
+
+			// If the weapon already exists, take what ammo we can.
+			if (weapon.TotalAmmo > 0) {
+				WeaponSprite existingWeapon = this._weaponInventory[index];
+				if ((existingWeapon.TotalAmmo < existingWeapon.MaxAmmo) && 
+				    (!existingWeapon.UnlimitedAmmo)) {
+					if (weapon.TotalAmmo <= existingWeapon.MaxAmmo) {
+						existingWeapon.Reload();
+						Int32 difference = (existingWeapon.MaxAmmo - existingWeapon.TotalAmmo);
+						if (weapon.TotalAmmo <= difference) {
+							existingWeapon.TotalAmmo += weapon.TotalAmmo;
+						}
+						else {
+							existingWeapon.TotalAmmo = existingWeapon.MaxAmmo;
+						}
+					}
+				}
+			}
 		}
 
 		/// <summary>
@@ -266,14 +321,35 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		/// If set to true, then automatically select the item after adding it.
 		/// </param>
 		public void GiveItem(ItemSprite item, Boolean autoSelect) {
+			if (item == null) {
+				return;
+			}
+
 			Int32 index = this._itemInventory.Add(item);
 			if (index != -1) {
-				// TODO fire item added event.
+				this.OnItemAdded(new ItemAddedEventArgs(index, item.ItemType, this._itemInventory.Count));
 				if (autoSelect) {
 					this.SelectItem(index);
 				}
+				return;
 			}
-			// TODO if item already exists and is not full, take what units we can.
+
+			// If item already exists and is not full, take what units we can.
+			if (item.TotalUnits > 0) {
+				ItemSprite existingItem = this._itemInventory[index];
+				if (existingItem.TotalUnits < existingItem.MaxUnits) {
+					if (item.TotalUnits <= existingItem.MaxUnits) {
+						existingItem.Replenish();
+						Int32 difference = (existingItem.MaxUnits - existingItem.TotalUnits);
+						if (item.TotalUnits <= difference) {
+							existingItem.TotalUnits += item.TotalUnits;
+						}
+						else {
+							existingItem.TotalUnits = existingItem.MaxUnits;
+						}
+					}
+				}
+			}
 		}
 
 		/// <summary>
@@ -313,7 +389,9 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 			if ((this._selectedItem != null) &&
 			    (!ItemCollection.IsNullOrEmpty(this._itemInventory))) {
 				this._itemInventory.Remove(this._selectedItem);
-				this.SelectItem(0);
+				if (this._itemInventory.Count > 0) {
+					this.SelectItem(0);
+				}
 				// TODO fire item drop event.
 			}
 		}

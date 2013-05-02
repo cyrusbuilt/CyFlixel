@@ -105,8 +105,8 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		/// The event arguments.
 		/// </param>
 		protected virtual void OnEmpty(ItemEmptyEventArgs e) {
-			if (this.Empty != null) {
-				this.Empty(this, e);
+			if (this.ItemEmpty != null) {
+				this.ItemEmpty(this, e);
 			}
 		}
 

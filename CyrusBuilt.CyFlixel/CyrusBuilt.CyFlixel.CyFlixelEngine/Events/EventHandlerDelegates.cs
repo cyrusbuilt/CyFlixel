@@ -136,5 +136,27 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.Events
 	/// The event arguments.
 	/// </param>
 	public delegate void ItemChangeEventHandler(Object sender, ItemChangeEventArgs e);
+
+	/// <summary>
+	/// Handler delegate for the weapon added event.
+	/// </summary>
+	/// <param name="sender">
+	/// The object sending the event call.
+	/// </param>
+	/// <param name="e">
+	/// The event arguments.
+	/// </param>
+	public delegate void WeaponAddedEventHandler(Object sender, WeaponAddedEventArgs e);
+
+	/// <summary>
+	/// Handler delegate for the item added event.
+	/// </summary>
+	/// <param name="sender">
+	/// The object sending the event call.
+	/// </param>
+	/// <param name="e">
+	/// The event arguments.
+	/// </param>
+	public delegate void ItemAddedEventHandler(Object sender, ItemAddedEventArgs e);
 }
 

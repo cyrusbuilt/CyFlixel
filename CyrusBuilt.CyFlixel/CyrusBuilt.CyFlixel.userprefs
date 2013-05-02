@@ -1,13 +1,22 @@
-﻿<Properties MonoDevelop.MonoMac.LastXamMacNagTime="4/25/2013 3:17:18 AM">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/DuplicateSpriteException.cs">
+﻿<Properties MonoDevelop.MonoMac.LastXamMacNagTime="5/2/2013 1:48:09 AM">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/PlayerSprite.cs">
     <Files>
-      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/PlayerSprite.cs" Line="23" Column="14" />
-      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/WeaponSprite.cs" Line="29" Column="65" />
-      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/WeaponCollection.cs" Line="46" Column="13" />
-      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/ItemCollection.cs" Line="56" Column="4" />
-      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/DuplicateSpriteException.cs" Line="30" Column="14" />
+      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/PlayerSprite.cs" Line="260" Column="39" />
+      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/WeaponSprite.cs" Line="1" Column="1" />
+      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/EntitySprites/ItemSprite.cs" Line="1" Column="1" />
+      <File FileName="CyrusBuilt.CyFlixel.CyFlixelEngine/Events/EventHandlerDelegates.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="CyrusBuilt.CyFlixel.CyFlixelEngine" expanded="True">
+            <Node name="EntitySprites" expanded="True" />
+            <Node name="Events" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
