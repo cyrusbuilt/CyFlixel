@@ -59,6 +59,16 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		/// Occurs when an item is added to inventory.
 		/// </summary>
 		public event ItemAddedEventHandler ItemAdded;
+
+		/// <summary>
+		/// Occurs when the current weapon is dropped.
+		/// </summary>
+		public event EventHandler WeaponDropped;
+
+		/// <summary>
+		/// Occurs when the current item is dropped.
+		/// </summary>
+		public event EventHandler ItemDropped;
 		#endregion
 
 		#region Constructors
@@ -170,6 +180,30 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 		protected virtual void OnItemAdded(ItemAddedEventArgs e) {
 			if (this.ItemAdded != null) {
 				this.ItemAdded(this, e);
+			}
+		}
+
+		/// <summary>
+		/// Raises the weapon dropped event.
+		/// </summary>
+		/// <param name="e">
+		/// The event arguments.
+		/// </param>
+		protected virtual void OnWeaponDropped(EventArgs e) {
+			if (this.WeaponDropped != null) {
+				this.WeaponDropped(this, e);
+			}
+		}
+
+		/// <summary>
+		/// Raises the item dropped event.
+		/// </summary>
+		/// <param name="e">
+		/// The event arguments.
+		/// </param>
+		protected virtual void OnItemDropped(EventArgs e) {
+			if (this.ItemDropped != null) {
+				this.ItemDropped(this, e);
 			}
 		}
 
@@ -359,8 +393,10 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 			if ((this._selectedWeapon != null) &&
 			    (!WeaponCollection.IsNullOrEmpty(this._weaponInventory))) {
 				this._weaponInventory.Remove(this._selectedWeapon);
-				this.SelectWeapon(0);
-				// TODO fire weapon drop event.
+				if (this._weaponInventory.Count > 0) {
+					this.SelectWeapon(0);
+				}
+				this.OnWeaponDropped(EventArgs.Empty);
 			}
 		}
 
@@ -392,7 +428,7 @@ namespace CyrusBuilt.CyFlixel.CyFlixelEngine.EntitySprites
 				if (this._itemInventory.Count > 0) {
 					this.SelectItem(0);
 				}
-				// TODO fire item drop event.
+				this.OnItemDropped(EventArgs.Empty);
 			}
 		}
 		#endregion
